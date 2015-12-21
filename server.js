@@ -20,8 +20,8 @@ var port = process.env.PORT || 7080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/test', function(req, res) {
-    res.json({ message: 'Hooray! This is my first API call!' });   
+router.get('/status', function(req, res) {
+    res.json({ text: 'Your status has been updated! Keep working!' });   
 });
 
 // more routes for our API will happen here
