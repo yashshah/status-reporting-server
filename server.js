@@ -29,7 +29,25 @@ var router = express.Router();              // get an instance of the express Ro
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/status', function(req, res) {
-    res.json({ text: 'Your status has been updated! Keep working!' });   
+    res.json({ text: 'Your status has been updated! Keep working!' });
+    var jsonString = {
+	    "status":req.query.text,
+	    "twitterHandle":"@"+req.query.user_name
+	}  
+    var jsonObj = JSON.parse(JSON.stringify(jsonString));
+    console.log(jsonObj)
+    appbaseRef.index({
+        type: 'feed',
+        body: jsonObj
+    }).on('data', function(response) {
+    	console.log("Done")
+        console.log(response);
+    }).on('error', function(error) {
+    	console.log("Oops")
+
+        console.log(error);
+    });
+
 });
 
 // more routes for our API will happen here
