@@ -12,6 +12,14 @@ var bodyParser = require('body-parser');
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var Appbase = require('appbase-js');
+
+var appbaseRef = new Appbase({
+  url: 'https://scalr.api.appbase.io',
+  appname: 'workingon',
+  username: 'iiyvFcb3A',
+  password: 'b3a36a4d-e517-451c-a04f-a11dc2c4b4bc'
+});
 
 var port = process.env.PORT || 7080;        // set our port
 
